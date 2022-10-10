@@ -33,11 +33,11 @@ namespace VendingMachine.Data
 
         public List<Product> ListsOfProduct()
         {
-            products.Add(new Drink(NextId(), "Beer", 75, DrinksUnit.Beer));
-            products.Add(new Drink(NextId(), "Soda", 25, DrinksUnit.Cola));
-            products.Add(new Drink(NextId(), "Loka", 25, DrinksUnit.Water));
-            products.Add(new Drink(NextId(), "Black Tower", 75, DrinksUnit.Wine));
-            products.Add(new Drink(NextId(), "Spiruts", 75, DrinksUnit.Whiskey));
+            products.Add(new Drink(NextId(), "Beer", 75, DrinksUnit.Beer, false));
+            products.Add(new Drink(NextId(), "Soda", 25, DrinksUnit.Cola, true));
+            products.Add(new Drink(NextId(), "Loka", 25, DrinksUnit.Water, true));
+            products.Add(new Drink(NextId(), "Black Tower", 75, DrinksUnit.Wine, false));
+            products.Add(new Drink(NextId(), "Spiruts", 75, DrinksUnit.Whiskey, false));
             products.Add(new Food(NextId(), "Food", 47, "Tacos", "Dinner"));
             products.Add(new Food(NextId(), "Food", 49, "Pizza", "Dinner"));
             products.Add(new Food(NextId(), "Snacks", 52, "Chips", "Snacks"));
@@ -52,7 +52,7 @@ namespace VendingMachine.Data
         {
             foreach (Product product in products)
             {
-                Console.WriteLine("\n" + product.Examine());
+                Console.WriteLine("\n" + product.Examine() + " ");
             }
             Console.WriteLine("Press any key to go to the menu");
         }
@@ -88,8 +88,10 @@ namespace VendingMachine.Data
                 Console.WriteLine("Invalid number.");
                 productNr = Int32.Parse(Console.ReadLine()) - 1;
             }
+           
             Product product = products[productNr];
             ProductId = productNr;
+            //if(productNr == ProductId || productNr == 0)
             Console.WriteLine($"{product.Examine()} \n{product.Use()}");
             Console.WriteLine("\n1: Will you make a purchase \n2: Do you want to add more products \n3: Will you go back to the menu");
             string input = Console.ReadLine();

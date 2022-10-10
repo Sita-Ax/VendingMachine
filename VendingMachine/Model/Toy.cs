@@ -10,6 +10,7 @@ namespace VendingMachine.Model
     {
         private string? Description { get; set; }
         public static int ToyId { get; set; }
+        public int AgeLimit { get; set; }
         public int NextId()
         {
             ToyId++;
@@ -33,22 +34,10 @@ namespace VendingMachine.Model
         {
             return base.Use() + "\nplay maybe?";
         }
-        public bool AgeLimit(int age)
+        public bool PassAgeLimit(int age)
         {
-                throw new NotImplementedException();
+            if (age > AgeLimit) { return true; }
+            else { return false; }
         }
-        public string AgeControll()
-        {
-            int userAge = 0;
-            Console.WriteLine("What is you age? ");
-            userAge = Convert.ToInt32(Console.ReadLine());
-            if (userAge < 4)
-            {
-                return "No you are under 4";
-            }
-            return "Yes";
-        }
-
-      
     }
 }

@@ -14,21 +14,24 @@ namespace VendingMachine.Model
         private DrinksUnit? DrinksUnit { get; set; }
         public int UserAge { get; set; }
         public static int DrinkId { get; set; }
+        public int AgeLimit { get; set; }
+
         public int NextId()
         {
             DrinkId++;
             return DrinkId;
         }
-        public Drink() 
+        public Drink()
         {
         }
         //Build a drink of this constructur
-        public Drink(int productId, string? productName, int productPrice, DrinksUnit diffrentSort) : base(productId, productName, productPrice)
+        public Drink(int productId, string? productName, int productPrice, DrinksUnit diffrentSort, bool ageControll) : base(productId, productName, productPrice)
         {
-            DrinksUnit = diffrentSort; 
+            DrinksUnit = diffrentSort;
+            AgeLimit = ageControll ? 1 : 0;
         }
 
-   
+
         //Like Info
         public override string Examine()
         {
@@ -40,21 +43,10 @@ namespace VendingMachine.Model
         {
             return base.Use() + "\nJust drink up!";
         }
-
-        public string AgeControll()
+        public bool PassAgeLimit(int age)
         {
-            Console.WriteLine("What is you age? ");
-             int userAge = Convert.ToInt32(Console.ReadLine());
-            if (userAge < 18)
-            {
-                return "No you are under 18";
-            }
-            return "Yes";
-        }
-
-        public bool AgeLimit(int age)
-        {
-            throw new NotImplementedException();
+            if (age > AgeLimit) { return true; }
+            else { return false; }
         }
     }
 }

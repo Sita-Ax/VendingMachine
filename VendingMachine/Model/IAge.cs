@@ -8,7 +8,6 @@ namespace VendingMachine.Model
 {
     public interface IAge
     {
-        public string AgeControll();
-        bool AgeLimit(int age);
+        bool PassAgeLimit(int age);
     }
 }

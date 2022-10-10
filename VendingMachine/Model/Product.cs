@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VendingMachine.Model
 {
     //Have this abstract so no one outside will read the info cant do methods code in this
-    public abstract class Product
+    public abstract class Product : IAge
     {
         //The base will have this id, name and price as propoties so the childclass
         private readonly int productId;
@@ -22,7 +22,6 @@ namespace VendingMachine.Model
             ProductName = productName;
             ProductPrice = productPrice;
         }
-       // public static int ProductId { get; set; }
       
         //Do get and set to reach the values
         public int ProductId 
@@ -41,7 +40,10 @@ namespace VendingMachine.Model
         {
             return $"---{this.GetType().Name} Instructions for----\n{ProductName} ";
         }
+
+        public bool PassAgeLimit(int age)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
-
-//amount on card and draw it from

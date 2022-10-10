@@ -11,9 +11,6 @@ namespace VendingMachine.Tests.Models
 {
     public class Product
     {
-        Drink drink = new Drink();
-        Food food = new Food();
-        Toy toy = new Toy();
         public Product()
         {
 
@@ -25,7 +22,7 @@ namespace VendingMachine.Tests.Models
             //Arr
             Drink drink = new Drink(1, "Beer", 75, DrinksUnit.Beer);
             Food food = new Food(1, "Food", 47, "Tacos", "Dinner");
-            Toy toy = new Toy(1, "puzzle", 62, "For adult");
+            Toy toy = new Toy(1, "Puzzle", 62, "For adult");
             //Act
 
             //Ass
@@ -35,7 +32,9 @@ namespace VendingMachine.Tests.Models
             Assert.Equal(75, drink.ProductPrice);
             Assert.Equal(47, food.ProductPrice);
             Assert.Equal(62, toy.ProductPrice);
-
+            Assert.Equal("Beer", drink.ProductName);
+            Assert.Equal("Food", food.ProductName);
+            Assert.Equal("Puzzle", toy.ProductName);
         }
     }
 }
